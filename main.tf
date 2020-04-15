@@ -5,6 +5,11 @@ resource "aws_secretsmanager_secret" "secret" {
   rotation_rules {
     automatically_after_days = var.rotation_days
   }
+  lifecycle {
+    ignore_changes = [
+      rotation_rules
+    ]
+  }
   tags        = var.tags
 }
 
